@@ -28,6 +28,7 @@ const OPTIONS = {
     const ipInfo = await fetchIpInfo(value)
   
     if (ipInfo) {
+      results.innerHTML="";
       results.innerHTML = JSON.stringify(ipInfo,null,3)
     }
     input.value="";
