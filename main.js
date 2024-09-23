@@ -1,3 +1,9 @@
+const $ = selector => document.querySelector(selector)
+const form = $('#form')
+const input = $('#input')
+const submit = $('#submit')
+const results = $('#results')
+
 const OPTIONS = {
 	method: 'GET',
 	headers: {
@@ -5,18 +11,11 @@ const OPTIONS = {
 		'x-rapidapi-host': 'ip-geolocation-metadata.p.rapidapi.com'
 	}
 };
-  const fetchIpInfo = ip => {
-    return fetch(`https://ip-geolocation-metadata.p.rapidapi.com/json/${ip}`, OPTIONS)
-      .then(res => res.json())
-      .catch(err => console.error(err))
-  }
-  
-  const $ = selector => document.querySelector(selector)
-  
-  const form = $('#form')
-  const input = $('#input')
-  const submit = $('#submit')
-  const results = $('#results')
+  const fetchIpInfo =async ip => {
+    const req=await fetch(`https://ip-geolocation-metadata.p.rapidapi.com/json/${ip}`, OPTIONS);
+    const res=await req.json();
+    return res;
+}
   
   form.addEventListener('submit', async (event) => {
     event.preventDefault()
